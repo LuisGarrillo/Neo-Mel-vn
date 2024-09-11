@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cp6y2v7dskuwe"]
+
+[node name="SceneFrame" type="Node2D"]
+
+[node name="DialogueManager" type="Node" parent="."]
+
+[node name="TextBox" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="characters" type="Node" parent="."]

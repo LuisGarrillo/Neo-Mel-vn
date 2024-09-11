@@ -9,5 +9,5 @@ func scene_display(day, scene):
 		if event["action"] == "d":
 			print(data["actors"][event["actor"]] + ": " + event["content"])
 		else:
-			print("*" + data["actors"][event["actor"]] + "gets " + event["content"] + "*")
+			print("*" + data["actors"][event["actor"]] + " gets " + event["content"] + "*")
 	
