@@ -2,12 +2,14 @@ extends Node
 const FileHandler = preload("res://scripts/file_handle/file_handler.gd")
 
 
-func load_content() -> String:
+func load_content(day, scene) -> String:
 	var fh = FileHandler.new()
-	return fh.load_from_file("res://assets//dialogues//test.txt")
+	day = String.num_int64(day)
+	scene = String.num_int64(scene)
+	return fh.load_from_file("res://assets//dialogues//day" + day + "//scene" + scene + ".txt")
 
-func get_scene_data(_scene: int) -> Dictionary:
-	var content = load_content()
+func get_scene_data(day, scene) -> Dictionary:
+	var content = load_content(day, scene)
 	var content_list = content.split("\n")
 	
 	var scene_data: Dictionary = {
