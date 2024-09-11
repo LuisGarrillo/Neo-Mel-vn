@@ -1,10 +1,10 @@
 extends Node2D
-const SceneLoader = preload("res://scripts/file_handle/scene_loader.gd")
+const TestSceneHandle = preload("res://scripts/tests/test_scene_handle.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var sl = SceneLoader.new()
-	print(sl.get_scene_data(1))
+	var sl = TestSceneHandle.new()
+	sl.scene_display(1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
