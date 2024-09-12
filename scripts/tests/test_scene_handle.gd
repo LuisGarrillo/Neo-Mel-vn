@@ -1,7 +1,8 @@
 extends Node
 const SceneLoader = preload("res://scripts/file_handle/scene_loader.gd")
-
-func scene_display(day, scene):
+var day = 1
+var scene = 1
+func scene_display():
 	var sl = SceneLoader.new()
 	var data = sl.get_scene_data(day, scene)
 	
