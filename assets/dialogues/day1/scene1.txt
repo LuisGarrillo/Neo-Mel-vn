@@ -1,5 +1,5 @@
-a1:Neo
-a2:Mel
+a1:Neo:test_character:left
+a2:Mel:test_character2:right
 -
 d:a1:Hello, this is the first dialogue. i'm testing it.
 e:a2:happy

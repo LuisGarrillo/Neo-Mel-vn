@@ -1,6 +1,8 @@
 extends Node
 const SceneLoader = preload("res://scripts/file_handle/scene_loader.gd")
 @onready var text_box: Control = $"../TextBox"
+@onready var characters: CharactersContainer = $"../characters"
+
 
 @onready var data : Dictionary
 signal emotion
@@ -23,6 +25,9 @@ func _ready() -> void:
 	var sl = SceneLoader.new()
 	data = sl.get_scene_data(day, scene)
 	scene_lenght = len(data["sequence"])
+	characters.preload_characters()
+	for actor in data["actors"]:
+		characters.load_character(data["actors"][actor]["file_name"])
 	manage_scene()
 
 func _process(_delta: float) -> void:
@@ -38,9 +43,13 @@ func get_input():
 		manage_scene()
 
 func manage_scene():
+	if scene_index == scene_lenght:
+		get_tree().quit()
+		return
+	
 	event = data["sequence"][scene_index]
 	if event["action"] == "d":
-			text_box.set_actor(data["actors"][event["actor"]])
+			text_box.set_actor(data["actors"][event["actor"]]["name"])
 			dialogue_lenght = len(event["content"])
 			print(event["content"])
 	elif event["action"] == "e":

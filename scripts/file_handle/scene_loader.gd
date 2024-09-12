@@ -36,7 +36,11 @@ func get_scene_data(day, scene) -> Dictionary:
 			
 		elif (read_mode == "actors"):
 			var actor_data = line.split(":")
-			scene_data["actors"][actor_data[0]] = actor_data[1]
+			scene_data["actors"][actor_data[0]] = {
+				"name": actor_data[1],
+				"file_name": actor_data[2],
+				"position": actor_data[3],
+			}
 			
 	return scene_data
 	
