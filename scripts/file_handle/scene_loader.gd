@@ -25,7 +25,7 @@ func get_scene_data(day, scene) -> Dictionary:
 		elif (read_mode == "sequence"):
 			if (line.is_empty()):
 				continue
-			var sequence_data = line.split(" ")
+			var sequence_data = line.split(":")
 			scene_data["sequence"].append(
 				{
 					"action" : sequence_data[0],
@@ -35,7 +35,7 @@ func get_scene_data(day, scene) -> Dictionary:
 			)
 			
 		elif (read_mode == "actors"):
-			var actor_data = line.split(" ")
+			var actor_data = line.split(":")
 			scene_data["actors"][actor_data[0]] = actor_data[1]
 			
 	return scene_data

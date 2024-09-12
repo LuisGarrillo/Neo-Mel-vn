@@ -1,6 +1,6 @@
-a1 Neo
-a2 Mel
+a1:Neo
+a2:Mel
 -
-d a1 Hello
-e a2 happy
-d a2 World!
+d:a1:Hello, this is the first dialogue. i'm testing it.
+e:a2:happy
+d:a2:And this is the second dialogue, let's see how it goes!
