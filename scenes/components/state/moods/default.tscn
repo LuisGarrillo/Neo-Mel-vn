@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtn3nyag7rq0d"]
+
+[ext_resource type="Script" path="res://scripts/components/state/moods/default.gd" id="1_wlg18"]
+
+[node name="Default" type="Node"]
+script = ExtResource("1_wlg18")
+id = "default"
