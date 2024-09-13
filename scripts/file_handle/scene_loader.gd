@@ -2,12 +2,14 @@ extends Node
 const FileHandler = preload("res://scripts/file_handle/file_handler.gd")
 
 
-func load_content() -> String:
+func load_content(day, scene) -> String:
 	var fh = FileHandler.new()
-	return fh.load_from_file("res://assets//dialogues//test.txt")
+	day = String.num_int64(day)
+	scene = String.num_int64(scene)
+	return fh.load_from_file("res://assets//dialogues//day" + day + "//scene" + scene + ".txt")
 
-func get_scene_data(_scene: int) -> Dictionary:
-	var content = load_content()
+func get_scene_data(day, scene) -> Dictionary:
+	var content = load_content(day, scene)
 	var content_list = content.split("\n")
 	
 	var scene_data: Dictionary = {
@@ -23,7 +25,7 @@ func get_scene_data(_scene: int) -> Dictionary:
 		elif (read_mode == "sequence"):
 			if (line.is_empty()):
 				continue
-			var sequence_data = line.split(" ")
+			var sequence_data = line.split(":")
 			scene_data["sequence"].append(
 				{
 					"action" : sequence_data[0],
@@ -33,8 +35,12 @@ func get_scene_data(_scene: int) -> Dictionary:
 			)
 			
 		elif (read_mode == "actors"):
-			var actor_data = line.split(" ")
-			scene_data["actors"][actor_data[0]] = actor_data[1]
+			var actor_data = line.split(":")
+			scene_data["actors"][actor_data[0]] = {
+				"name": actor_data[1],
+				"file_name": actor_data[2],
+				"position": actor_data[3],
+			}
 			
 	return scene_data
 	

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjbjdb12iu3s7"]
+
+[ext_resource type="Script" path="res://scripts/components/state/moods/happy.gd" id="1_c6d2x"]
+[ext_resource type="Texture2D" uid="uid://2ikcusudfirw" path="res://assets/sprites/moods/happy.png" id="2_0wsjx"]
+
+[node name="Happy" type="Node"]
+script = ExtResource("1_c6d2x")
+id = "happy"
+limit = 120
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_0wsjx")

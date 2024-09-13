@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp6y2v7dskuwe"]
+
+[ext_resource type="Script" path="res://scripts/managers/dialogue_manager.gd" id="1_dxn2e"]
+[ext_resource type="PackedScene" uid="uid://bwqniv46uwu1n" path="res://scenes/components/text_box.tscn" id="1_y0qln"]
+[ext_resource type="Script" path="res://scripts/characters/character_list.gd" id="3_w2ku7"]
+
+[node name="SceneFrame" type="Node2D"]
+
+[node name="TextBox" parent="." instance=ExtResource("1_y0qln")]
+
+[node name="DialogueManager" type="Node" parent="."]
+script = ExtResource("1_dxn2e")
+
+[node name="characters" type="Node" parent="."]
+script = ExtResource("3_w2ku7")

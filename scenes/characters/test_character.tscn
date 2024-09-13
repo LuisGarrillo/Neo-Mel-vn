@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq7ka1wbe5eum"]
+
+[ext_resource type="Script" path="res://scripts/characters/character.gd" id="1_fjqdj"]
+[ext_resource type="Texture2D" uid="uid://baxlumxvjednn" path="res://assets/sprites/test_character/neo.png" id="1_fr2wn"]
+[ext_resource type="PackedScene" uid="uid://c0ygg1sej6h4f" path="res://scenes/components/state/state_manager.tscn" id="3_1gs5r"]
+[ext_resource type="PackedScene" uid="uid://dtn3nyag7rq0d" path="res://scenes/components/state/moods/default.tscn" id="4_c0jql"]
+
+[node name="TestCharacter" type="Node2D"]
+script = ExtResource("1_fjqdj")
+id = "Neo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fr2wn")
+
+[node name="StateManager" parent="." instance=ExtResource("3_1gs5r")]
+
+[node name="Default" parent="StateManager" instance=ExtResource("4_c0jql")]
