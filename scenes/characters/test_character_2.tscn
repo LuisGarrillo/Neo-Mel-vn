@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4mjf5b6hq13q"]
+
+[ext_resource type="Script" path="res://scripts/characters/character.gd" id="1_5i83x"]
+[ext_resource type="Texture2D" uid="uid://u0rbtftqbaku" path="res://assets/sprites/test_character2/mel.png" id="1_kxn6g"]
+[ext_resource type="PackedScene" uid="uid://c0ygg1sej6h4f" path="res://scenes/components/state/state_manager.tscn" id="3_dm5px"]
+[ext_resource type="PackedScene" uid="uid://dtn3nyag7rq0d" path="res://scenes/components/state/moods/default.tscn" id="4_0417n"]
+[ext_resource type="PackedScene" uid="uid://bjbjdb12iu3s7" path="res://scenes/components/state/moods/happy.tscn" id="5_bwuer"]
+
+[node name="TestCharacter2" type="Node2D"]
+script = ExtResource("1_5i83x")
+id = "Mel"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kxn6g")
+
+[node name="StateManager" parent="." instance=ExtResource("3_dm5px")]
+
+[node name="Default" parent="StateManager" instance=ExtResource("4_0417n")]
+
+[node name="Happy" parent="StateManager" instance=ExtResource("5_bwuer")]

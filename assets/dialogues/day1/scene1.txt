@@ -1,6 +1,10 @@
 a1:Neo:test_character:left
-a2:Mel:test_character2:right
+a2:Mel:test_character_2:right
 -
+io:a1:empty
 d:a1:Hello, this is the first dialogue. i'm testing it.
 e:a2:happy
+io:a2:empty
 d:a2:And this is the second dialogue, let's see how it goes!
+io:a2:empty
+d:a1:This is actually amazing, I can't believe it works!
