@@ -27,7 +27,7 @@ func _ready() -> void:
 	scene_lenght = len(data["sequence"])
 	characters.preload_characters()
 	for actor in data["actors"]:
-		characters.load_character(data["actors"][actor]["file_name"])
+		characters.load_character(data["actors"][actor]["file_name"], data["actors"][actor]["position"])
 	manage_scene()
 
 func _process(_delta: float) -> void:
@@ -42,6 +42,10 @@ func get_input():
 		dialogue_finished = false
 		manage_scene()
 
+func keep_going():
+	scene_index +=1
+	manage_scene()
+
 func manage_scene():
 	if scene_index == scene_lenght:
 		get_tree().quit()
@@ -53,9 +57,11 @@ func manage_scene():
 			dialogue_lenght = len(event["content"])
 			print(event["content"])
 	elif event["action"] == "e":
-		emotion.emit()
-		scene_index +=1
-		manage_scene()
+		characters.change_emotion(data["actors"][event["actor"]]["file_name"], event["content"])
+		keep_going()
+	elif event["action"] == "io":
+		characters.character_in_out(data["actors"][event["actor"]]["file_name"])
+		keep_going()
 		
 func manage_dialogue_text():
 	if dialogue_finished:
