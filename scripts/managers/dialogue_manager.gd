@@ -55,7 +55,7 @@ func manage_scene():
 	if event["action"] == "d":
 			text_box.set_actor(data["actors"][event["actor"]]["name"])
 			dialogue_lenght = len(event["content"])
-			print(event["content"])
+			characters.set_talking(data["actors"][event["actor"]]["file_name"])
 	elif event["action"] == "e":
 		characters.change_emotion(data["actors"][event["actor"]]["file_name"], event["content"])
 		keep_going()
@@ -72,7 +72,7 @@ func manage_dialogue_text():
 	
 	if dialogue_index == dialogue_lenght - 1:
 		dialogue_finished = true
-		print("can advance")
+		characters.set_talking(data["actors"][event["actor"]]["file_name"])
 		
 	text_box.set_content(dialogue_content)
 	text_box.display_text()
