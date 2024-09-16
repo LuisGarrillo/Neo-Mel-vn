@@ -46,4 +46,7 @@ func character_in_out(id):
 	
 func change_emotion(id, emotion):
 	loaded_characters[id].change_emotion(emotion)
+
+func set_talking(id):
+	loaded_characters[id].set_talking()
 	
