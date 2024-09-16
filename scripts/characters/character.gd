@@ -15,7 +15,6 @@ func _ready() -> void:
 	eyes_sprite.play("default")
 
 func change_emotion(emotion):
-	state_manager.change_state(emotion)
 	set_mood(emotion)
 	change_eyes_sprite(mood)
 	
