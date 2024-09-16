@@ -5,7 +5,6 @@ const SceneLoader = preload("res://scripts/file_handle/scene_loader.gd")
 
 
 @onready var data : Dictionary
-signal emotion
 
 var day: int = 1
 var scene: int = 1
