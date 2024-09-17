@@ -1,5 +1,5 @@
-a1:Neo:test_character:left
-a2:Mel:test_character_2:right
+a1:Neo:test_character:left:back
+a2:Mel:test_character_2:right:front
 -
 io:a1:empty
 d:a1:Hello, this is the first dialogue. i'm testing it.

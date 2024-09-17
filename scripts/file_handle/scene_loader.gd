@@ -40,6 +40,7 @@ func get_scene_data(day, scene) -> Dictionary:
 				"name": actor_data[1],
 				"file_name": actor_data[2],
 				"position": actor_data[3],
+				"depth": actor_data[4],
 			}
 			
 	return scene_data

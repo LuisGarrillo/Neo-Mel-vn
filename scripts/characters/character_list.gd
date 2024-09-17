@@ -7,6 +7,10 @@ var positions: Dictionary = {
 	"right": Vector2(875, 225),
 	"center": Vector2(576, 225),
 }
+var depths: Dictionary = {
+	"back": 3,
+	"front": 7,
+}
 
 func preload_characters():
 	for file in DirAccess.get_files_at("res://scenes/characters/"):
@@ -14,7 +18,7 @@ func preload_characters():
 		print(file)
 		characters[file_split[0]] = load("res://scenes/characters/" + file)
 		
-func load_character(id, position):
+func load_character(id, position, depth):
 	if not id in characters.keys():
 		print("CHARACTER LOADER:\nThe character that you're trying to load doesn't exist\n")
 		return
@@ -25,6 +29,7 @@ func load_character(id, position):
 	
 	var character_instance = characters[id].instantiate()
 	character_instance.position = positions[position]
+	character_instance.z_index = depths[depth]
 	character_instance.visible = false
 	add_child(character_instance)
 	loaded_characters[id] = character_instance

@@ -26,7 +26,11 @@ func _ready() -> void:
 	scene_lenght = len(data["sequence"])
 	characters.preload_characters()
 	for actor in data["actors"]:
-		characters.load_character(data["actors"][actor]["file_name"], data["actors"][actor]["position"])
+		characters.load_character(
+			data["actors"][actor]["file_name"], 
+			data["actors"][actor]["position"],
+			data["actors"][actor]["depth"],
+			)
 	manage_scene()
 
 func _process(_delta: float) -> void:
