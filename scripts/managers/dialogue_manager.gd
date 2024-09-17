@@ -69,7 +69,7 @@ func manage_dialogue_text():
 	dialogue_content += event["content"][dialogue_index]
 	dialogue_index += 1
 	
-	if dialogue_index == dialogue_lenght - 1:
+	if dialogue_index == dialogue_lenght:
 		dialogue_finished = true
 		characters.set_talking(data["actors"][event["actor"]]["file_name"])
 		
