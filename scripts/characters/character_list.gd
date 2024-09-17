@@ -54,4 +54,6 @@ func change_emotion(id, emotion):
 
 func set_talking(id):
 	loaded_characters[id].set_talking()
-	
+
+func change_state(id, state, args):
+	loaded_characters[id].change_state(state, args)

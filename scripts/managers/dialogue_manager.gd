@@ -65,6 +65,17 @@ func manage_scene():
 	elif event["action"] == "io":
 		characters.character_in_out(data["actors"][event["actor"]]["file_name"])
 		keep_going()
+	elif event["action"] == "m":
+		var splitted_content = event["content"].split(",")
+		characters.change_state(
+			data["actors"][event["actor"]]["file_name"],
+			"moving",
+			{
+				"direction": int(splitted_content[0]),
+				"goal": int(splitted_content[1]),
+			}
+		)
+		keep_going()
 		
 func manage_dialogue_text():
 	if dialogue_finished:
