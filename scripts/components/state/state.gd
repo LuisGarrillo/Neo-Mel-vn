@@ -11,7 +11,7 @@ var counter: int = 0
 var root_position : Vector2
 var root: Node2D
 
-func start(args):
+func start(_args):
 	started.emit()
 
 func update(_delta):

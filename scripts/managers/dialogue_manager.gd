@@ -16,7 +16,7 @@ var event
 var dialogue_finished: bool = false
 var dialogue_index: int = 0
 var dialogue_lenght: int = 0
-var dialogue_delta_counter: float = 0
+var dialogue_finished_counter: int = 0
 var dialogue_content : String  = ""
 
 # Called when the node enters the scene tree for the first time.
@@ -38,11 +38,12 @@ func _process(_delta: float) -> void:
 	manage_dialogue_text()
 
 func get_input():
-	if Input.is_action_just_pressed("accept") and dialogue_finished:
+	if Input.is_action_pressed("accept") and dialogue_finished_counter > 5:
 		dialogue_content = ""
 		dialogue_index = 0
 		scene_index += 1
 		dialogue_finished = false
+		dialogue_finished_counter = 0
 		manage_scene()
 
 func keep_going():
@@ -79,10 +80,15 @@ func manage_scene():
 		
 func manage_dialogue_text():
 	if dialogue_finished:
+		dialogue_finished_counter += 1
 		return
 		
 	dialogue_content += event["content"][dialogue_index]
-	dialogue_index += 1
+	dialogue_index += 1   
+	
+	if Input.is_action_pressed("accept") and dialogue_index > 10:
+		dialogue_content = event["content"]
+		dialogue_index = dialogue_lenght
 	
 	if dialogue_index == dialogue_lenght:
 		dialogue_finished = true

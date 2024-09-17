@@ -396,6 +396,7 @@ animations = [{
 }]
 
 [node name="TestCharacter2" type="Node2D" node_paths=PackedStringArray("state_manager", "main_sprite", "eyes_sprite", "mouth_sprite")]
+visible = false
 script = ExtResource("1_5i83x")
 id = "Mel"
 state_manager = NodePath("StateManager")
