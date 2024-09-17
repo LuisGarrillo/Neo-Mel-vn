@@ -9,11 +9,12 @@ signal change
 
 var counter: int = 0
 var root_position : Vector2
+var root: Node2D
 
-func start():
+func start(args):
 	started.emit()
 
-func update():
+func update(_delta):
 	pass
 	
 func finish():
