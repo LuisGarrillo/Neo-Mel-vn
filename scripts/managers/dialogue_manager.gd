@@ -1,13 +1,13 @@
 extends Node
-const SceneLoader = preload("res://scripts/file_handle/scene_loader.gd")
+class_name DialogueManager
+
 @onready var text_box: Control = $"../TextBox"
 @onready var characters: CharactersContainer = $"../characters"
-
-
 @onready var data : Dictionary
+const SceneLoader = preload("res://scripts/file_handle/scene_loader.gd")
 
-var day: int = 1
-var scene: int = 1
+signal scene_finished
+
 var scene_index: int = 0
 var scene_lenght: int = 0
 
@@ -18,12 +18,13 @@ var dialogue_index: int = 0
 var dialogue_lenght: int = 0
 var dialogue_finished_counter: int = 0
 var dialogue_content : String  = ""
+	
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var sl = SceneLoader.new()
-	data = sl.get_scene_data(day, scene)
-	scene_lenght = len(data["sequence"])
+func _process(_delta: float) -> void:
+	get_input()
+	manage_dialogue_text()
+
+func load_characters():
 	characters.preload_characters()
 	for actor in data["actors"]:
 		characters.load_character(
@@ -31,12 +32,27 @@ func _ready() -> void:
 			data["actors"][actor]["position"],
 			data["actors"][actor]["depth"],
 			)
+
+func set_up_scene(scene_data):
+	data = scene_data
+	scene_lenght = len(data["sequence"])
+	load_characters()
 	manage_scene()
 
-func _process(_delta: float) -> void:
-	get_input()
-	manage_dialogue_text()
-
+func clear_scene():
+	characters.clear_characters()
+	clear_variables()
+	scene_finished.emit()
+	
+func clear_variables():
+	scene_index = 0
+	scene_lenght = 0
+	dialogue_finished = false
+	dialogue_index = 0
+	dialogue_lenght = 0
+	dialogue_finished_counter = 0
+	dialogue_content = ""
+	
 func get_input():
 	if Input.is_action_pressed("accept") and dialogue_finished_counter > 5:
 		dialogue_content = ""
@@ -52,8 +68,7 @@ func keep_going():
 
 func manage_scene():
 	if scene_index == scene_lenght:
-		get_tree().quit()
-		return
+		clear_scene()
 	
 	event = data["sequence"][scene_index]
 	if event["action"] == "d":
@@ -77,7 +92,7 @@ func manage_scene():
 			}
 		)
 		keep_going()
-		
+
 func manage_dialogue_text():
 	if dialogue_finished:
 		dialogue_finished_counter += 1
@@ -96,4 +111,3 @@ func manage_dialogue_text():
 		
 	text_box.set_content(dialogue_content)
 	text_box.display_text()
-	
