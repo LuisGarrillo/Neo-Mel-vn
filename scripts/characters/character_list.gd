@@ -41,7 +41,14 @@ func unload_character(id):
 	
 	remove_child(loaded_characters[id])
 	loaded_characters.erase(id)
-	
+
+func clear_characters():
+	var children = get_children()
+	for child in children:
+		remove_child(child)
+	characters = {}
+	loaded_characters = {}
+
 func character_in_out(id):
 	if not id in characters.keys():
 		print("CHARACTER LOADER:\nThe character \'" + id + "\' that is trying to appear doesn't exist\n")
