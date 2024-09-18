@@ -2,11 +2,14 @@ a1:Neo:test_character:left:back
 a2:Mel:test_character_2:right:front
 -
 io:a1:empty
+d:a2:Let's test wrapping WWWWWWWWWWWWW WWWWWWWWWWWWWWW WWWWWWWWWWWWWWWWWWWWWWWW WWWWWWWWWWWWWWWWWWW WWWWWWWWW!
 d:a1:Hello, this is the first dialogue. i'm testing it.
 e:a2:happy
 io:a2:empty
 d:a2:And this is the second dialogue, let's see how it goes!
 e:a2:default
 d:a2:I'm no longer happy.
+m:a2:-1,300
+d:a2:Wow now I'm moving!
 io:a2:empty
 d:a1:This is actually amazing, I can't believe it works!
