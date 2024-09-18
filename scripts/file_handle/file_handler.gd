@@ -1,8 +1,15 @@
 extends Node
+class_name FileHandle
 
 func valid_path(path):
 	if not FileAccess.file_exists(path):
 		print("file in " + path + "does not exist.")
+		return false
+	return true
+	
+func valid_dir(path):
+	if not DirAccess.dir_exists_absolute(path):
+		print("directory in " + path + "does not exist.")
 		return false
 	return true
 
