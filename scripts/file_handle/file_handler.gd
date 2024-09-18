@@ -13,6 +13,18 @@ func valid_dir(path):
 		return false
 	return true
 
+func directories_in_location(path: String):
+	if not valid_dir(path):
+		return
+	
+	return DirAccess.get_directories_at(path)
+	
+func files_in_location(path: String):
+	if not valid_dir(path):
+		return
+	
+	return DirAccess.get_files_at(path)
+
 func save_to_file(path, content):
 	if not valid_path(path):
 		return
