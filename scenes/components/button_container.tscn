@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1t6dx32gbjny"]
+
+[ext_resource type="Script" path="res://scripts/components/button_container.gd" id="1_4yqwr"]
+
+[node name="ButtonContainer" type="GridContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4yqwr")
