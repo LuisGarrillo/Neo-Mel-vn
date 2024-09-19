@@ -48,6 +48,7 @@ text = "This is the epic visual novel "
 label_settings = SubResource("LabelSettings_113pp")
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 306.0
 offset_right = 1158.0
@@ -55,3 +56,7 @@ offset_bottom = 375.0
 scale = Vector2(0.656654, 0.40222)
 text = "most visual novels have their options here for some reason"
 label_settings = SubResource("LabelSettings_vl4jy")
+
+[connection signal="pressed" from="ButtonContainer/StartBtn" to="." method="start_game"]
+[connection signal="pressed" from="ButtonContainer/LoadBtn" to="." method="load_game"]
+[connection signal="pressed" from="ButtonContainer/ExitBtn" to="." method="exit_game"]

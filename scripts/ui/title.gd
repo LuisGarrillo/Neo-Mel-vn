@@ -1,11 +1,14 @@
 extends Control
-const SCENE_FRAME = preload("res://scenes/frames/scene_frame.tscn")
+signal start
+signal load
+signal exit
 
 
-func _ready() -> void:
-	pass # Replace with function body.
+func start_game() -> void:
+	start.emit()
 
+func load_game() -> void:
+	load.emit()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func exit_game() -> void:
+	exit.emit()
