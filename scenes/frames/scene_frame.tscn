@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/managers/scene_manager.gd" id="5_uxp35"]
 
 [node name="SceneFrame" type="Node2D"]
+process_mode = 1
 script = ExtResource("5_uxp35")
 
 [node name="TextBox" parent="." instance=ExtResource("1_y0qln")]
