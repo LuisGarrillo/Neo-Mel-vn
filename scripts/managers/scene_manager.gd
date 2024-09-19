@@ -32,8 +32,8 @@ func set_up():
 	for day_index in len(days):
 		var scenes = load_scenes(days[day_index])
 		data_list.append([])
-		for scene in scenes:
-			data_list[day_index].append(sl.get_scene_data(days[day_index], scene))
+		for load_scene in scenes:
+			data_list[day_index].append(sl.get_scene_data(days[day_index], load_scene))
 	
 	dialogue_manager.set_up_scene(data_list[day][scene])
 
@@ -44,8 +44,8 @@ func set_day_and_scene(new_day, new_scene):
 func load_days():
 	return fh.directories_in_location("res://assets//dialogues")
 
-func load_scenes(day):
-	return fh.files_in_location("res://assets//dialogues//" + day)
+func load_scenes(load_day):
+	return fh.files_in_location("res://assets//dialogues//" + load_day)
 
 func advance():
 	if day == len(day_list) - 1:

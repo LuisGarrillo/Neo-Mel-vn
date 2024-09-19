@@ -3,7 +3,7 @@ const FileHandler = preload("res://scripts/file_handle/file_handler.gd")
 var fh: FileHandle
 
 func get_scene_data(day, scene) -> Dictionary:
-	var fh = FileHandler.new()
+	fh = FileHandler.new()
 	var content = fh.load_from_file("res://assets//dialogues//" + day + "//" + scene)
 	var content_list = content.split("\n")
 	
