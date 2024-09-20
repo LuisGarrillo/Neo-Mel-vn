@@ -1,10 +1,11 @@
-[gd_scene load_steps=63 format=3 uid="uid://b4mjf5b6hq13q"]
+[gd_scene load_steps=64 format=3 uid="uid://b4mjf5b6hq13q"]
 
 [ext_resource type="Script" path="res://scripts/characters/character.gd" id="1_5i83x"]
 [ext_resource type="PackedScene" uid="uid://c0ygg1sej6h4f" path="res://scenes/components/state/state_manager.tscn" id="3_dm5px"]
 [ext_resource type="PackedScene" uid="uid://dtn3nyag7rq0d" path="res://scenes/components/state/moods/default.tscn" id="4_0417n"]
 [ext_resource type="Texture2D" uid="uid://cw5dc24kb68ve" path="res://assets/sprites/test/test_main-Sheet.png" id="5_2lr5c"]
 [ext_resource type="PackedScene" uid="uid://bjbjdb12iu3s7" path="res://scenes/components/state/moods/happy.tscn" id="5_bwuer"]
+[ext_resource type="PackedScene" uid="uid://v5i7cf7g43cj" path="res://scenes/components/state/moving.tscn" id="5_j5aa3"]
 [ext_resource type="Texture2D" uid="uid://ifruqicymt8h" path="res://assets/sprites/test/test_eyes-Sheet.png" id="6_lwjer"]
 [ext_resource type="Texture2D" uid="uid://qlecmkri85n4" path="res://assets/sprites/test/test_mouth-Sheet.png" id="7_4ygi3"]
 [ext_resource type="Texture2D" uid="uid://bqupov5byiten" path="res://assets/sprites/test/test_eyes_happy-Sheet.png" id="7_lffqt"]
@@ -395,6 +396,7 @@ animations = [{
 }]
 
 [node name="TestCharacter2" type="Node2D" node_paths=PackedStringArray("state_manager", "main_sprite", "eyes_sprite", "mouth_sprite")]
+visible = false
 script = ExtResource("1_5i83x")
 id = "Mel"
 state_manager = NodePath("StateManager")
@@ -407,6 +409,8 @@ mouth_sprite = NodePath("Sprites/Mouth")
 [node name="Default" parent="StateManager" instance=ExtResource("4_0417n")]
 
 [node name="Happy" parent="StateManager" instance=ExtResource("5_bwuer")]
+
+[node name="Moving" parent="StateManager" instance=ExtResource("5_j5aa3")]
 
 [node name="Sprites" type="Node2D" parent="."]
 

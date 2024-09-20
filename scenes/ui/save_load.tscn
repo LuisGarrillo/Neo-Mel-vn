@@ -1,0 +1,149 @@
+[gd_scene load_steps=3 format=3 uid="uid://bndnofklxk7r7"]
+
+[ext_resource type="PackedScene" uid="uid://b1t6dx32gbjny" path="res://scenes/components/button_container.tscn" id="1_ggi6r"]
+[ext_resource type="Script" path="res://scripts/ui/save_load.gd" id="1_opk1x"]
+
+[node name="SaveLoad" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_opk1x")
+
+[node name="HSplitContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TitleContainer" type="Control" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="HSplitContainer/TitleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/TitleContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="HSplitContainer/TitleContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "pa tras"
+
+[node name="Label" type="Label" parent="HSplitContainer/TitleContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="SlotContainer" type="Control" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="HSplitContainer/SlotContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/SlotContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control3" type="Control" parent="HSplitContainer/SlotContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="HSplitContainer/SlotContainer/VBoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.784314, 1, 1)
+
+[node name="Control" type="Control" parent="HSplitContainer/SlotContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="ColorRect" type="ColorRect" parent="HSplitContainer/SlotContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 1, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/SlotContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ButtonContainer" parent="HSplitContainer/SlotContainer/VBoxContainer/Control/MarginContainer" instance=ExtResource("1_ggi6r")]
+layout_mode = 2
+columns = 4
+
+[node name="Control2" type="Control" parent="HSplitContainer/SlotContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="HSplitContainer/SlotContainer/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.784314, 1, 1)
+
+[node name="ButtonContainer" parent="HSplitContainer/SlotContainer/VBoxContainer/Control2" instance=ExtResource("1_ggi6r")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 600
+columns = 2
+
+[node name="Button" type="Button" parent="HSplitContainer/SlotContainer/VBoxContainer/Control2/ButtonContainer"]
+layout_mode = 2
+text = "back"
+
+[node name="Button2" type="Button" parent="HSplitContainer/SlotContainer/VBoxContainer/Control2/ButtonContainer"]
+layout_mode = 2
+text = "next"

@@ -1,15 +1,10 @@
 extends Node
 const FileHandler = preload("res://scripts/file_handle/file_handler.gd")
-
-
-func load_content(day, scene) -> String:
-	var fh = FileHandler.new()
-	day = String.num_int64(day)
-	scene = String.num_int64(scene)
-	return fh.load_from_file("res://assets//dialogues//day" + day + "//scene" + scene + ".txt")
+var fh: FileHandle
 
 func get_scene_data(day, scene) -> Dictionary:
-	var content = load_content(day, scene)
+	fh = FileHandler.new()
+	var content = fh.load_from_file("res://assets//dialogues//" + day + "//" + scene)
 	var content_list = content.split("\n")
 	
 	var scene_data: Dictionary = {
@@ -40,6 +35,7 @@ func get_scene_data(day, scene) -> Dictionary:
 				"name": actor_data[1],
 				"file_name": actor_data[2],
 				"position": actor_data[3],
+				"depth": actor_data[4],
 			}
 			
 	return scene_data

@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp6y2v7dskuwe"]
+[gd_scene load_steps=6 format=3 uid="uid://cp6y2v7dskuwe"]
 
 [ext_resource type="Script" path="res://scripts/managers/dialogue_manager.gd" id="1_dxn2e"]
 [ext_resource type="PackedScene" uid="uid://bwqniv46uwu1n" path="res://scenes/components/text_box.tscn" id="1_y0qln"]
 [ext_resource type="Script" path="res://scripts/characters/character_list.gd" id="3_w2ku7"]
+[ext_resource type="Texture2D" uid="uid://c4ex2lklul84k" path="res://assets/sprites/test/soemthing.png" id="4_ehonv"]
+[ext_resource type="Script" path="res://scripts/managers/scene_manager.gd" id="5_uxp35"]
 
 [node name="SceneFrame" type="Node2D"]
+process_mode = 1
+script = ExtResource("5_uxp35")
 
 [node name="TextBox" parent="." instance=ExtResource("1_y0qln")]
 
@@ -13,3 +17,8 @@ script = ExtResource("1_dxn2e")
 
 [node name="characters" type="Node" parent="."]
 script = ExtResource("3_w2ku7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(554, 262)
+texture = ExtResource("4_ehonv")

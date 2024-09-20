@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqs0p1mlqa5le"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause.gd" id="1_rod3s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5cr5q"]
+font_size = 50
+
+[node name="Pause" type="Control"]
+z_index = 20
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rod3s")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 272.0
+offset_right = 509.0
+offset_bottom = 408.0
+
+[node name="LoadBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="StatusBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Status"
+
+[node name="ResumeBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Resume Shift"
+
+[node name="BackTitleBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Go back to the title"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.321569, 1, 1, 0.0509804)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 74.0
+offset_right = 1049.0
+offset_bottom = 143.0
+text = "This is the coolest pause menu"
+label_settings = SubResource("LabelSettings_5cr5q")
+
+[connection signal="pressed" from="GridContainer/LoadBtn" to="." method="_on_load_btn_pressed"]
+[connection signal="pressed" from="GridContainer/StatusBtn" to="." method="_on_status_btn_pressed"]
+[connection signal="pressed" from="GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="GridContainer/BackTitleBtn" to="." method="_on_back_title_btn_pressed"]

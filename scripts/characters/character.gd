@@ -40,3 +40,6 @@ func change_mouth_sprite(key):
 
 func change_eyes_sprite(key):
 	eyes_sprite.play(key)
+	
+func change_state(state, args):
+	state_manager.change_state(state, args)
