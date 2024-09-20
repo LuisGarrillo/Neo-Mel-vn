@@ -20,7 +20,6 @@ func check_input():
 		handle_pause()
 
 func handle_pause():
-	print("hi")
 	get_tree().paused = !get_tree().paused
 	var is_paused = get_tree().paused
 	
@@ -48,4 +47,11 @@ func check_status():
 	pass
 	
 func back_to_title():
-	pass
+	on_title = true
+	handle_pause()
+	var children = get_children()
+	for child in children:
+		remove_child(child)
+	
+	add_child(title)
+	
