@@ -15,7 +15,6 @@ func _on_status_btn_pressed() -> void:
 
 
 func _on_resume_btn_pressed() -> void:
-	print("resume")
 	resume.emit()
 
 
