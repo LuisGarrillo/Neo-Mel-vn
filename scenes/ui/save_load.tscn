@@ -5,6 +5,7 @@
 
 [node name="SaveLoad" type="Control"]
 process_mode = 2
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,10 +111,6 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-
-[node name="ButtonContainer" parent="HSplitContainer/SlotContainer/VBoxContainer/Control/MarginContainer" instance=ExtResource("1_ggi6r")]
-layout_mode = 2
-columns = 4
 
 [node name="Control2" type="Control" parent="HSplitContainer/SlotContainer/VBoxContainer"]
 layout_mode = 2
