@@ -3,13 +3,13 @@ class_name FileHandle
 
 func valid_path(path):
 	if not FileAccess.file_exists(path):
-		print("file in " + path + "does not exist.")
+		print("file in " + path + " does not exist.")
 		return false
 	return true
 	
 func valid_dir(path):
 	if not DirAccess.dir_exists_absolute(path):
-		print("directory in " + path + "does not exist.")
+		print("directory in " + path + " does not exist.")
 		return false
 	return true
 
@@ -24,6 +24,15 @@ func files_in_location(path: String):
 		return
 	
 	return DirAccess.get_files_at(path)
+
+func create_file(path, content = null):
+	if valid_path(path):
+		return
+	
+	var new_file = FileAccess.open(path, FileAccess.WRITE_READ)
+	if content:
+		new_file.store_string(content)
+	return
 
 func save_to_file(path, content):
 	if not valid_path(path):

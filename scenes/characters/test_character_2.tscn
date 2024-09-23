@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dtn3nyag7rq0d" path="res://scenes/components/state/moods/default.tscn" id="4_0417n"]
 [ext_resource type="Texture2D" uid="uid://cw5dc24kb68ve" path="res://assets/sprites/test/test_main-Sheet.png" id="5_2lr5c"]
 [ext_resource type="PackedScene" uid="uid://bjbjdb12iu3s7" path="res://scenes/components/state/moods/happy.tscn" id="5_bwuer"]
-[ext_resource type="PackedScene" uid="uid://v5i7cf7g43cj" path="res://scenes/components/state/moving.tscn" id="5_j5aa3"]
+[ext_resource type="PackedScene" path="res://scenes/components/state/moving.tscn" id="5_j5aa3"]
 [ext_resource type="Texture2D" uid="uid://ifruqicymt8h" path="res://assets/sprites/test/test_eyes-Sheet.png" id="6_lwjer"]
 [ext_resource type="Texture2D" uid="uid://qlecmkri85n4" path="res://assets/sprites/test/test_mouth-Sheet.png" id="7_4ygi3"]
 [ext_resource type="Texture2D" uid="uid://bqupov5byiten" path="res://assets/sprites/test/test_eyes_happy-Sheet.png" id="7_lffqt"]
