@@ -1,7 +1,8 @@
 extends Button
 var data: Dictionary = {
+	"empty": true,
 	"date": "",
-	"day": "",
-	"scene": "",
+	"day": 0,
+	"scene": 0,
 	"status": {},
 }
