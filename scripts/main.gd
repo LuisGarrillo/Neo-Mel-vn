@@ -2,8 +2,10 @@ extends Node2D
 @onready var title: Control = $Title
 const PAUSE = preload("res://scenes/ui/pause.tscn")
 const SCENE_FRAME = preload("res://scenes/frames/scene_frame.tscn")
+const SAVE_LOAD = preload("res://scenes/ui/save_load.tscn")
 var on_title : bool = true
 var game
+var save_load
 var pause_menu : PauseMenu
 
 func _process(_delta: float) -> void:
@@ -19,9 +21,12 @@ func check_input():
 	if Input.is_action_just_pressed("pause") and !on_title:
 		handle_pause()
 
-func handle_pause():
+func toggle_pause():
 	get_tree().paused = !get_tree().paused
-	var is_paused = get_tree().paused
+	return get_tree().paused
+
+func handle_pause():
+	var is_paused = toggle_pause()
 	
 	if is_paused:
 		pause_menu = PAUSE.instantiate()
@@ -38,7 +43,12 @@ func game_start() -> void:
 	add_child(game)
 
 func load_game() -> void:
-	pass
+	if on_title:
+		toggle_pause()
+		remove_child(title)
+	save_load = SAVE_LOAD.instantiate()
+	save_load.set_up_mode("load")
+	add_child(save_load)
 
 func game_exit() -> void:
 	get_tree().quit()
