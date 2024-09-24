@@ -6,7 +6,7 @@ var index : int = 0
 var selected_button : Button
 var frame_counter: int = 0
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func set_up():
 	buttons = get_children()
 	selected_button = buttons[0]
 	selected_button.grab_focus()

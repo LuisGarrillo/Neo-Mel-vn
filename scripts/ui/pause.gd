@@ -1,10 +1,14 @@
 extends Control
 class_name PauseMenu
+@onready var grid_container: GridContainer = $GridContainer
+
 signal load
 signal status
 signal resume
 signal title
 
+func _ready() -> void:
+	grid_container.set_up()
 
 func _on_load_btn_pressed() -> void:
 	load.emit()
