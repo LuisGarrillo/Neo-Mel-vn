@@ -1,11 +1,15 @@
 extends Control
 @onready var button_container: ButtonContainer = $HSplitContainer/SlotContainer/VBoxContainer/Control/MarginContainer/ButtonContainer
+@onready var page_label: Label = $HSplitContainer/SlotContainer/VBoxContainer/Control3/PageLabel
 
 const FileHandler = preload("res://scripts/file_handle/file_handler.gd")
 const SAVE_LOAD_BUTTON = preload("res://scenes/components/save_load_button.tscn")
 
+signal return_back
 signal load
+signal save
 
+var previous_screen = ""
 var fh
 var files
 var save_data_list: Array = []
@@ -30,6 +34,7 @@ func _ready():
 	add_slots()
 	button_container.set_up()
 	set_screen()
+	page_label.text = "Page #" + String.num_int64(page)
 
 func manage_size():
 	size = get_viewport_rect().size
@@ -54,9 +59,9 @@ func load_data(index, content):
 	print(index)
 	load.emit(content)
 
-func save_data(index, content: Dictionary):
+func save_data(index):
 	print(index)
-	fh.save_to_file("user://" + files[index], JSON.stringify(content, "\t"))
+	save.emit(index)
 
 func set_screen():
 	if (mode == "save"):
@@ -70,7 +75,6 @@ func set_up_mode(new_mode):
 func add_slots():
 	var width = (button_container.size.x - 50 * 3) / 4
 	var height = (button_container.size.y - 50) / 2 
-	print(size)
 	var lower = slots
 	var upper = slots + 8
 	for index in range(lower, upper):
@@ -90,8 +94,34 @@ func connect_load_slots():
 	for child : SaveLoadButton in button_container.get_children():
 		child.trigger.connect(load_data)
 
-func move_page():
-	pass
+func move_page_forward():
+	if slots == 48:
+		slots = 0
+		page = 0
+		move_page_forward()
+		return
+	
+	for child in button_container.get_children():
+		button_container.remove_child(child)
+	page += 1
+	page_label.text = "Page #" + String.num_int64(page)
+	add_slots()
+	set_screen()
+	
+func move_page_backwards():
+	if slots == 8:
+		slots = 40
+		page = 5
+		move_page_forward()
+		return
+		
+	slots -= 16
+	for child in button_container.get_children():
+		button_container.remove_child(child)
+	page -= 1
+	page_label.text = "Page #" + String.num_int64(page)
+	add_slots()
+	set_screen()
 
-func populate_slots():
-	pass
+func go_back():
+	return_back.emit("save_load", previous_screen)

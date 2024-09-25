@@ -84,6 +84,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.784314, 1, 1)
 
+[node name="PageLabel" type="Label" parent="HSplitContainer/SlotContainer/VBoxContainer/Control3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Control" type="Control" parent="HSplitContainer/SlotContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -148,3 +153,7 @@ text = "back"
 [node name="Button2" type="Button" parent="HSplitContainer/SlotContainer/VBoxContainer/Control2/ButtonContainer"]
 layout_mode = 2
 text = "next"
+
+[connection signal="pressed" from="HSplitContainer/TitleContainer/ColorRect/VBoxContainer/Button" to="." method="go_back"]
+[connection signal="pressed" from="HSplitContainer/SlotContainer/VBoxContainer/Control2/ButtonContainer/Button" to="." method="move_page_backwards"]
+[connection signal="pressed" from="HSplitContainer/SlotContainer/VBoxContainer/Control2/ButtonContainer/Button2" to="." method="move_page_forward"]
