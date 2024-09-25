@@ -7,9 +7,6 @@ signal status
 signal resume
 signal title
 
-func _ready() -> void:
-	grid_container.set_up()
-
 func _on_load_btn_pressed() -> void:
 	load.emit()
 
@@ -23,4 +20,4 @@ func _on_resume_btn_pressed() -> void:
 
 
 func _on_back_title_btn_pressed() -> void:
-	title.emit()
+	title.emit("pause", "title")
