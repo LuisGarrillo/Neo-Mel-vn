@@ -35,6 +35,9 @@ func set_up():
 		for load_scene in scenes:
 			data_list[day_index].append(sl.get_scene_data(days[day_index], load_scene))
 	
+	set_up_scene()
+
+func set_up_scene():
 	dialogue_manager.set_up_scene(data_list[day][scene])
 
 func set_day_and_scene(new_day, new_scene):
@@ -54,7 +57,11 @@ func advance():
 	
 	if scene == day_list[day] -1:
 		day += 1
+		scene = 0
 	else:
 		scene += 1
 		
-	set_up()
+	set_up_scene()
+	
+func clear_scene():
+	dialogue_manager.clear_scene()
