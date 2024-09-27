@@ -59,6 +59,11 @@ text = "Load this epic visual novel"
 layout_mode = 2
 text = "Exit from thsi epic visual novel"
 
+[node name="Button" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "Test save"
+
 [connection signal="pressed" from="ButtonContainer/StartBtn" to="." method="start_game"]
 [connection signal="pressed" from="ButtonContainer/LoadBtn" to="." method="load_game"]
 [connection signal="pressed" from="ButtonContainer/ExitBtn" to="." method="exit_game"]
+[connection signal="pressed" from="ButtonContainer/Button" to="." method="save_game"]
