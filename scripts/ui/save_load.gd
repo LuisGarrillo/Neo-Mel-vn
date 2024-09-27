@@ -56,12 +56,11 @@ func load_data_from_files():
 		save_data_list.append(JSON.parse_string(fh.load_from_file("user://" + file)))
 
 func load_data(index, content):
-	print(index)
+	print(content)
 	load.emit(content)
 
-func save_data(index):
-	print(index)
-	save.emit(index)
+func save_data(index, content):
+	save.emit(index, content)
 
 func set_screen():
 	if (mode == "save"):
