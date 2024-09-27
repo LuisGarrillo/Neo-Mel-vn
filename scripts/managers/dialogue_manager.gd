@@ -27,6 +27,7 @@ func _process(_delta: float) -> void:
 func load_characters():
 	characters.preload_characters()
 	for actor in data["actors"]:
+		print(actor)
 		characters.load_character(
 			data["actors"][actor]["file_name"], 
 			data["actors"][actor]["position"],
@@ -42,6 +43,8 @@ func set_up_scene(scene_data):
 func clear_scene():
 	characters.clear_characters()
 	clear_variables()
+
+func finish_scene():
 	scene_finished.emit()
 	
 func clear_variables():
@@ -69,6 +72,7 @@ func keep_going():
 func manage_scene():
 	if scene_index == scene_lenght:
 		clear_scene()
+		finish_scene()
 	
 	event = data["sequence"][scene_index]
 	if event["action"] == "d":
