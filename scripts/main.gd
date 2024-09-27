@@ -3,7 +3,11 @@ extends Node2D
 const PAUSE = preload("res://scenes/ui/pause.tscn")
 const SCENE_FRAME = preload("res://scenes/frames/scene_frame.tscn")
 const SAVE_LOAD = preload("res://scenes/ui/save_load.tscn")
+const FileHandler = preload("res://scripts/file_handle/file_handler.gd")
+
 var on_title : bool = true
+var day: int
+var scene: int
 var game
 var save_load
 var pause_menu : PauseMenu
@@ -13,7 +17,7 @@ func _process(_delta: float) -> void:
 	check_input()
 
 func connect_pause_signals():
-	pause_menu.load.connect(load_game)
+	pause_menu.load.connect(set_save_load_game)
 	pause_menu.status.connect(check_status)
 	pause_menu.resume.connect(handle_pause)
 	pause_menu.title.connect(go_back)
@@ -43,14 +47,16 @@ func game_start() -> void:
 	remove_child(title)
 	add_child(game)
 
-func load_game() -> void:
+func set_save_load_game(mode) -> void:
 	if on_title:
 		toggle_pause()
 		remove_child(title)
 	save_load = SAVE_LOAD.instantiate()
-	save_load.set_up_mode("load")
+	save_load.set_up_mode(mode)
 	save_load.previous_screen = "title"
 	save_load.return_back.connect(go_back)
+	save_load.save.connect(save_data)
+	save_load.load.connect(load_data)
 	go_back_screens["save_load"] = save_load
 	add_child(save_load)
 
@@ -78,4 +84,23 @@ func back_to_title():
 		remove_child(child)
 	
 	add_child(title)
+	
+func save_data(index, content):
+	print("saving")
+	var fh = FileHandler.new()
+	fh.save_to_file("user://sav" + String.num_int64(index) + ".json", JSON.stringify(content))
+	fh = null
+	
+func load_data(content):
+	if on_title:
+		toggle_pause()
+		remove_child(save_load)
+		save_load = null
+		game_start()
+	else:
+		pass
+	game.clear_scene()
+	game.set_day_and_scene(content["day"], content["scene"])
+	game.set_up_scene()
+		
 	

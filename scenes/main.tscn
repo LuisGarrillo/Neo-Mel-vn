@@ -10,5 +10,6 @@ script = ExtResource("1_jl0us")
 [node name="Title" parent="." instance=ExtResource("2_mqx4f")]
 
 [connection signal="exit" from="Title" to="." method="game_exit"]
-[connection signal="load" from="Title" to="." method="load_game"]
+[connection signal="load" from="Title" to="." method="set_save_load_game"]
+[connection signal="save" from="Title" to="." method="save_data"]
 [connection signal="start" from="Title" to="." method="game_start"]
