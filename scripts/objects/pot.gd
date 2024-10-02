@@ -1,13 +1,19 @@
 extends Node2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var finished_rotation = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
+	check_input()
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and rotation_degrees >= 0:
-			rotation_degrees -= 30
-		elif event.is_released() and event.button_index == MOUSE_BUTTON_LEFT and rotation_degrees < 0:
-			rotation_degrees = 0
+func check_input():
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not finished_rotation:
+		animation_player.play("pour")
+	elif not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and finished_rotation:
+		animation_player.play("return")
+
+
+func set_finished_rotation():
+	finished_rotation = !finished_rotation
