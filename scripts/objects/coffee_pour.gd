@@ -7,4 +7,4 @@ func _ready() -> void:
 
 func toggle():
 	visible = !visible
-	area_2d.monitoring = !area_2d.monitoring
+	area_2d.monitorable = !area_2d.monitorable
