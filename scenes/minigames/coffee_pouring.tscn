@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bev7v31mjybjr"]
+
+[ext_resource type="Script" path="res://scripts/managers/pouring_manager.gd" id="1_pii1x"]
+[ext_resource type="PackedScene" uid="uid://b8hjgpy2g1kxu" path="res://scenes/objects/pot.tscn" id="1_wewbu"]
+[ext_resource type="PackedScene" uid="uid://c2rgmrlfs0j7f" path="res://scenes/objects/filter.tscn" id="2_cvb3o"]
+
+[node name="CoffeePouring" type="Node2D"]
+
+[node name="PouringManager" type="Node" parent="."]
+script = ExtResource("1_pii1x")
+
+[node name="pot" parent="." instance=ExtResource("1_wewbu")]
+
+[node name="Filter" parent="." instance=ExtResource("2_cvb3o")]
+position = Vector2(597, 359)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="PouringManager" method="_on_timer_timeout"]
