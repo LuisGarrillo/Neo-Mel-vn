@@ -6,6 +6,7 @@ const SAVE_LOAD = preload("res://scenes/ui/save_load.tscn")
 const FileHandler = preload("res://scripts/file_handle/file_handler.gd")
 
 var on_title : bool = true
+var is_paused : bool = false
 var day: int
 var scene: int
 var game
@@ -30,16 +31,27 @@ func toggle_pause():
 	get_tree().paused = !get_tree().paused
 	return get_tree().paused
 
+func create_pause():
+	pause_menu = PAUSE.instantiate()
+	add_child(pause_menu)
+	connect_pause_signals()
+
+func delete_pause():
+	remove_child(pause_menu)
+	pause_menu = null
+
+func delete_save_load():
+	toggle_pause()
+	remove_child(save_load)
+	save_load = null
+
 func handle_pause():
-	var is_paused = toggle_pause()
+	is_paused = toggle_pause()
 	
 	if is_paused:
-		pause_menu = PAUSE.instantiate()
-		add_child(pause_menu)
-		connect_pause_signals()
+		create_pause()
 	else:
-		remove_child(pause_menu)
-		pause_menu = null
+		delete_pause()
 
 func game_start() -> void:
 	on_title = false
@@ -48,16 +60,20 @@ func game_start() -> void:
 	add_child(game)
 
 func set_save_load_game(mode) -> void:
-	if on_title:
-		toggle_pause()
-		remove_child(title)
 	save_load = SAVE_LOAD.instantiate()
 	save_load.set_up_mode(mode)
-	save_load.previous_screen = "title"
 	save_load.return_back.connect(go_back)
 	save_load.save.connect(save_data)
 	save_load.load.connect(load_data)
-	go_back_screens["save_load"] = save_load
+	
+	if on_title:
+		toggle_pause()
+		remove_child(title)
+		save_load.previous_screen = "title"
+	if is_paused:
+		delete_pause()
+		save_load.previous_screen = "pause"
+	
 	add_child(save_load)
 
 func game_exit() -> void:
@@ -68,14 +84,13 @@ func check_status():
 
 func go_back(from, to):
 	if from == "save_load":
-		remove_child(save_load)
-		toggle_pause()
-		save_load = null
-	elif from == "pause":
-		handle_pause()
+		delete_save_load()
 	
 	if to == "title":
 		back_to_title()
+	if to == "pause":
+		is_paused = false
+		handle_pause()
 
 func back_to_title():
 	on_title = true
@@ -93,12 +108,11 @@ func save_data(index, content):
 	
 func load_data(content):
 	if on_title:
-		toggle_pause()
-		remove_child(save_load)
-		save_load = null
+		delete_save_load()
 		game_start()
-	else:
-		pass
+	elif is_paused:
+		delete_save_load()
+		is_paused = false
 	game.clear_scene()
 	game.set_day_and_scene(content["day"], content["scene"])
 	game.set_up_scene()

@@ -8,7 +8,7 @@ signal resume
 signal title
 
 func _on_load_btn_pressed() -> void:
-	load.emit()
+	load.emit("load")
 
 
 func _on_status_btn_pressed() -> void:
