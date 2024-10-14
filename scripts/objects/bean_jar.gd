@@ -21,7 +21,7 @@ func _on_mouse_exited() -> void:
 	animation_player.play("RESET")
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and mouse_in:
 		animation_player.play("clicked")
 		selected.emit()
