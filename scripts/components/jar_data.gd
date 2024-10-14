@@ -6,8 +6,6 @@ class_name JarData
 
 signal selected
 
-func ready():
-	var parent = get_parent()
-
 func amplify_signal() -> void:
-	selected.emit()
+	print("amplifying")
+	selected.emit(type, bean_name)
