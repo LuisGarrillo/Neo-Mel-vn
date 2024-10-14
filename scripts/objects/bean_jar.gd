@@ -1,0 +1,24 @@
+extends Node2D
+@export var srpite : Sprite2D
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var outline_sprite: Sprite2D = $OutlineSprite
+
+var mouse_in : bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	outline_sprite.visible = false
+
+
+func _on_mouse_entered() -> void:
+	mouse_in = true
+	animation_player.play("hovered")
+	
+func _on_mouse_exited() -> void:
+	mouse_in = false
+	animation_player.play("RESET")
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	pass # Replace with function body.
