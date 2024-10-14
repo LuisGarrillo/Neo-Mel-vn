@@ -1,5 +1,4 @@
 extends Node2D
-@export var srpite : Sprite2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var outline_sprite: Sprite2D = $OutlineSprite

@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8me6xlv3wywb"]
+[gd_scene load_steps=2 format=3 uid="uid://c8me6xlv3wywb"]
 
-[ext_resource type="PackedScene" uid="uid://73a1tpwtn640" path="res://scenes/objects/bean_jar.tscn" id="1_pt37b"]
-[ext_resource type="Texture2D" uid="uid://g77lqsaxvgjt" path="res://assets/sprites/objects/jar.png" id="2_mf3ik"]
+[ext_resource type="PackedScene" uid="uid://lpxhad36vvha" path="res://scenes/objects/jars/test_jar_1.tscn" id="1_5nx4k"]
 
 [node name="BeanSelection" type="Node2D"]
 position = Vector2(602, 310)
 
-[node name="BeanJar" parent="." node_paths=PackedStringArray("srpite") instance=ExtResource("1_pt37b")]
-srpite = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="BeanJar"]
-texture = ExtResource("2_mf3ik")
+[node name="TestJar1" parent="." instance=ExtResource("1_5nx4k")]
+type = "test"
+bean_name = "test"
