@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8me6xlv3wywb"]
+
+[ext_resource type="PackedScene" uid="uid://73a1tpwtn640" path="res://scenes/objects/bean_jar.tscn" id="1_pt37b"]
+[ext_resource type="Texture2D" uid="uid://g77lqsaxvgjt" path="res://assets/sprites/objects/jar.png" id="2_mf3ik"]
+
+[node name="BeanSelection" type="Node2D"]
+position = Vector2(602, 310)
+
+[node name="BeanJar" parent="." node_paths=PackedStringArray("srpite") instance=ExtResource("1_pt37b")]
+srpite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="BeanJar"]
+texture = ExtResource("2_mf3ik")
