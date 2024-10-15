@@ -1,4 +1,5 @@
 extends Node
+class_name BeanSelector
 @onready var jars: JarManager = $Jars
 
 signal recipe
