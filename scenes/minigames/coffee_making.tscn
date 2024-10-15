@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://btnxh7cjbgbi8"]
+[gd_scene load_steps=3 format=3 uid="uid://btnxh7cjbgbi8"]
 
 [ext_resource type="Script" path="res://scripts/managers/coffee_making_manager.gd" id="1_61ciw"]
+[ext_resource type="PackedScene" uid="uid://c8me6xlv3wywb" path="res://scenes/minigames/bean_selection.tscn" id="2_hmbki"]
 
 [node name="CoffeeMaking" type="Node2D"]
 script = ExtResource("1_61ciw")
+
+[node name="BeanSelection" parent="." instance=ExtResource("2_hmbki")]
