@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8me6xlv3wywb"]
+[gd_scene load_steps=6 format=3 uid="uid://c8me6xlv3wywb"]
 
 [ext_resource type="PackedScene" uid="uid://lpxhad36vvha" path="res://scenes/objects/jars/test_jar_1.tscn" id="1_5nx4k"]
 [ext_resource type="Script" path="res://scripts/managers/bean_selection_manager.gd" id="1_fm3rd"]
 [ext_resource type="Script" path="res://scripts/managers/jar_manager.gd" id="2_6ofxo"]
+[ext_resource type="PackedScene" uid="uid://coalqfpe71xki" path="res://scenes/objects/jars/test_jar_2.tscn" id="4_w35u4"]
+[ext_resource type="PackedScene" uid="uid://ddnpwx3oyxe7s" path="res://scenes/objects/jars/test_jar_3.tscn" id="5_6d0x8"]
 
 [node name="BeanSelection" type="Node2D"]
 position = Vector2(602, 310)
@@ -12,6 +14,12 @@ script = ExtResource("1_fm3rd")
 script = ExtResource("2_6ofxo")
 
 [node name="TestJar1" parent="Jars" instance=ExtResource("1_5nx4k")]
-position = Vector2(602, 310)
+position = Vector2(398, 310)
 type = "test"
 bean_name = "test"
+
+[node name="TestJar2" parent="Jars" instance=ExtResource("4_w35u4")]
+position = Vector2(602, 310)
+
+[node name="TestJar3" parent="Jars" instance=ExtResource("5_6d0x8")]
+position = Vector2(792, 310)
