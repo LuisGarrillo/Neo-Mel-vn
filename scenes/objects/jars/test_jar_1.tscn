@@ -11,5 +11,3 @@ script = ExtResource("1_a3yrt")
 
 [node name="Sprite2D" type="Sprite2D" parent="BeanJar"]
 texture = ExtResource("2_164oy")
-
-[connection signal="selected" from="BeanJar" to="." method="amplify_signal"]
