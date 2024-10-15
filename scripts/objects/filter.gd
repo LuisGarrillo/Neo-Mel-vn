@@ -16,9 +16,9 @@ func _physics_process(delta: float) -> void:
 	if is_pouring:
 		pour_accumulator += delta
 
-func pouring(area: Area2D) -> void:
+func pouring(_area: Area2D) -> void:
 	print("hi")
 	is_pouring = true
 
-func not_pouring(area: Area2D) -> void:
+func not_pouring(_area: Area2D) -> void:
 	is_pouring = false
