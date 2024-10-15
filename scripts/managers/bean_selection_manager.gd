@@ -1,11 +1,12 @@
 extends Node
+@onready var jars: JarManager = $Jars
 
+signal recipe
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	jars.bean_selected.connect(send_recipe)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func send_recipe(recipe_data):
+	recipe.emit(recipe_data)

@@ -1,6 +1,8 @@
 extends Node
 class_name JarManager
 
+signal bean_selected
+
 const BeanDataFile = preload("res://scripts/data/bean_data.gd")
 var bean_data_inst: BeanData
 var recipes_data: Dictionary
@@ -17,4 +19,4 @@ func connect_jars():
 		jar.selected.connect(jar_selected)
 
 func jar_selected(type, bean_name):
-	print(recipes_data[type][bean_name])
+	bean_selected.emit(recipes_data[type][bean_name])
