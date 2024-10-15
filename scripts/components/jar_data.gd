@@ -6,6 +6,10 @@ class_name JarData
 
 signal selected
 
+func _ready():
+	var jar_base = get_children()[0]
+	jar_base.selected.connect(amplify_signal)
+
 func amplify_signal() -> void:
 	print("amplifying")
 	selected.emit(type, bean_name)
