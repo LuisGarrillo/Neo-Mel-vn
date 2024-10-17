@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1bv4tr4he12y"]
+[gd_scene load_steps=6 format=3 uid="uid://b1bv4tr4he12y"]
 
 [ext_resource type="Texture2D" uid="uid://d0d0bmgd5eg6m" path="res://assets/sprites/ui/coffee_pouring/hot.png" id="1_hflnh"]
+[ext_resource type="Texture2D" uid="uid://dnqi6tynqctcq" path="res://assets/sprites/ui/coffee_pouring/cold.png" id="1_yhh6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyl0s"]
+atlas = ExtResource("1_yhh6s")
+region = Rect2(0, 0, 300, 107)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hs0o"]
 atlas = ExtResource("1_hflnh")
@@ -8,6 +13,14 @@ region = Rect2(0, 0, 300, 107)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wvuau"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyl0s")
+}],
+"loop": true,
+"name": &"cold",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0hs0o")
@@ -38,10 +51,26 @@ size_flags_vertical = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Container"]
 sprite_frames = SubResource("SpriteFrames_wvuau")
-animation = &"hot"
+animation = &"cold"
 centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Times
+"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "End"
