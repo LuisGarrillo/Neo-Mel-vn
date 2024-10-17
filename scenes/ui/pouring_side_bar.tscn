@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1bv4tr4he12y"]
+[gd_scene load_steps=7 format=3 uid="uid://b1bv4tr4he12y"]
 
+[ext_resource type="Script" path="res://scripts/ui/pouring_side_bar.gd" id="1_c7ahi"]
 [ext_resource type="Texture2D" uid="uid://d0d0bmgd5eg6m" path="res://assets/sprites/ui/coffee_pouring/hot.png" id="1_hflnh"]
 [ext_resource type="Texture2D" uid="uid://dnqi6tynqctcq" path="res://assets/sprites/ui/coffee_pouring/cold.png" id="1_yhh6s"]
 
@@ -37,6 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c7ahi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
