@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1bv4tr4he12y"]
+
+[ext_resource type="Texture2D" uid="uid://d0d0bmgd5eg6m" path="res://assets/sprites/ui/coffee_pouring/hot.png" id="1_hflnh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hs0o"]
+atlas = ExtResource("1_hflnh")
+region = Rect2(0, 0, 300, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvuau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hs0o")
+}],
+"loop": true,
+"name": &"hot",
+"speed": 5.0
+}]
+
+[node name="PouringSideBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_vertical = 2
+
+[node name="Container" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Container"]
+sprite_frames = SubResource("SpriteFrames_wvuau")
+animation = &"hot"
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
