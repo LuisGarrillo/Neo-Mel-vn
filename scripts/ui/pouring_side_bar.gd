@@ -1,11 +1,9 @@
 extends Control
+const POURING_TIME = preload("res://scenes/ui/pouring_time.tscn")
+@onready var times_container: VBoxContainer = $VBoxContainer/VBoxContainer/TimesContainer
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func set_up(actions):
+	for action in actions:
+		var timestamp: PouringTimestamp = POURING_TIME.instantiate()
+		timestamp.set_up(action["time"], action["type"])
+		times_container.add_child(timestamp)
