@@ -65,18 +65,23 @@ size_flags_stretch_ratio = 5.0
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
 text = "Times
 "
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
 text = "Start"
 
 [node name="TimesContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 
 [node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
 text = "End"
 
 [node name="CoffeePouring" parent="." instance=ExtResource("4_matf1")]

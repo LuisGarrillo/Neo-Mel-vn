@@ -53,6 +53,7 @@ offset_right = -852.0
 offset_bottom = -623.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 script = ExtResource("1_x7o6w")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -67,12 +68,14 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Control"]
 sprite_frames = SubResource("SpriteFrames_gumbl")
 animation = &"cold"
-centered = false
+offset = Vector2(15, 0)
