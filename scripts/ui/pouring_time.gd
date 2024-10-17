@@ -1,4 +1,5 @@
 extends Control
+class_name PouringTimestamp
 @onready var type_sprite: AnimatedSprite2D = $HBoxContainer/Control/AnimatedSprite2D
 @onready var label: Label = $HBoxContainer/Label
 
