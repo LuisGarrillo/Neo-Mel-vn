@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://c2rgmrlfs0j7f" path="res://scenes/objects/filter.tscn" id="2_cvb3o"]
 
 [node name="CoffeePouring" type="Node2D"]
-
-[node name="PouringManager" type="Node" parent="."]
 script = ExtResource("1_pii1x")
 
 [node name="pot" parent="." instance=ExtResource("1_wewbu")]
@@ -16,5 +14,3 @@ position = Vector2(597, 359)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
-
-[connection signal="timeout" from="Timer" to="PouringManager" method="_on_timer_timeout"]
