@@ -14,3 +14,5 @@ position = Vector2(597, 359)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[connection signal="pot_temperature_change" from="pot" to="." method="change_temperature_intermediary"]
