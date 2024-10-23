@@ -4,6 +4,11 @@ class_name PouringTimestamp
 @onready var label: Label = $HBoxContainer/Label
 
 func set_up(time: int, type: String) -> void:
-	label.text = "00:" + String.num_int64(time)
+	update(time)
 	type_sprite.play(type)
-	
+
+func update(time:int) -> void:
+	if time > 9:
+		label.text = "00:" + String.num_int64(time)
+	else:
+		label.text = "00:0" + String.num_int64(time)
