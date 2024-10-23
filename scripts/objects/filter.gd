@@ -1,13 +1,28 @@
 extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
-const SPEED = 1
+var SPEED = 1
 const radius = 100
 var delta_accumulator: float = 0
 var is_pouring: bool = false
 var pour_accumulator: float
+var type : String
 
 func _physics_process(delta: float) -> void:
+	update_area(delta)
+
+func wait():
+	SPEED = 0
+	area_2d.monitoring = false
+	area_2d.visible = false
+
+func start(new_type):
+	SPEED = 1
+	type = new_type
+	area_2d.monitoring = true
+	area_2d.visible = true
+
+func update_area(delta: float):
 	delta_accumulator -= delta
 	area_2d.position = Vector2(
 		cos(delta_accumulator * SPEED) * radius,
