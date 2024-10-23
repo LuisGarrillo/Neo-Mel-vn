@@ -55,7 +55,7 @@ size_flags_vertical = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Container"]
 sprite_frames = SubResource("SpriteFrames_wvuau")
-animation = &"cold"
+animation = &"hot"
 centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
@@ -68,11 +68,13 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "Times
 "
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "Start"
+horizontal_alignment = 1
 
 [node name="TimesContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -83,5 +85,8 @@ size_flags_stretch_ratio = 3.0
 layout_mode = 2
 size_flags_vertical = 6
 text = "End"
+horizontal_alignment = 1
 
 [node name="CoffeePouring" parent="." instance=ExtResource("4_matf1")]
+
+[connection signal="change_temperature" from="CoffeePouring" to="." method="switch_temperature"]
