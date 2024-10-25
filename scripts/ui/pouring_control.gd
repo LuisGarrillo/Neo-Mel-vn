@@ -44,8 +44,5 @@ func check_time():
 	update_state()
 		
 
-func switch_temperature(hot: bool):
-	if hot:
-		animated_sprite_2d.play("hot")
-	else:
-		animated_sprite_2d.play("cold")
+func switch_temperature(temperature: String):
+	animated_sprite_2d.play(temperature)

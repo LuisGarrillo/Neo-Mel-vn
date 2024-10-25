@@ -12,7 +12,4 @@ script = ExtResource("1_pii1x")
 [node name="Filter" parent="." instance=ExtResource("2_cvb3o")]
 position = Vector2(597, 359)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-
 [connection signal="pot_temperature_change" from="pot" to="." method="change_temperature_intermediary"]
