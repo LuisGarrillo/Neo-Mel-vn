@@ -5,7 +5,8 @@ signal change_temperature
 
 var pattern
 
-func set_up(pouring_pattern):
+func set_up(pouring_pattern, first_step_temp):
+	filter.set_up(first_step_temp)
 	pattern = pouring_pattern
 
 func update(state):
