@@ -19,9 +19,10 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_sgu7j")
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="WholeArea" type="Area2D" parent="."]
+monitorable = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WholeArea"]
 polygon = PackedVector2Array(-2, -33, -57, -33, -92, 0, -55, 39, 0, 39, 55, 39, 94, 1, 55, -34)
 
 [connection signal="area_entered" from="Area2D" to="." method="pouring"]

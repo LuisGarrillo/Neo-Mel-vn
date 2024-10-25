@@ -1,5 +1,6 @@
 extends Node2D
 @onready var area_2d: Area2D = $Area2D
+@onready var methods: Dictionary
 
 var SPEED = 1
 const radius = 100
@@ -7,9 +8,13 @@ var delta_accumulator: float = 0
 var is_pouring: bool = false
 var pour_accumulator: float
 var type : String
+var state = "active"
+
+func _ready() -> void:
+	methods["active"] = update_area
 
 func _physics_process(delta: float) -> void:
-	update_area(delta)
+	methods["active"].call(delta)
 
 func wait():
 	SPEED = 0
