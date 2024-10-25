@@ -53,6 +53,15 @@ func update_area(delta: float):
 		pour_accumulator += delta
 		print(pour_accumulator)
 
+func get_score() -> Dictionary:
+	return {
+		"pouring-time" : pour_accumulator,
+		"pouring-time-waiting": wait_accumulator,
+		"score": pour_accumulator - wait_accumulator
+	}
+
+func change_pot_temp(temperature):
+	pot_temperature = temperature
 
 func pouring(_area: Area2D) -> void:
 	is_pouring = true
