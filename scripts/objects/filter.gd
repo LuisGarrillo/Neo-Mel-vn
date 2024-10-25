@@ -1,31 +1,45 @@
 extends Node2D
 @onready var area_2d: Area2D = $Area2D
+@onready var whole_area: Area2D = $WholeArea
 @onready var methods: Dictionary
+
 
 var SPEED = 1
 const radius = 100
 var delta_accumulator: float = 0
+var wait_accumulator: float = 0
 var is_pouring: bool = false
 var pour_accumulator: float
 var type : String
 var state = "active"
+var state: String = "active"
 
 func _ready() -> void:
 	methods["active"] = update_area
+	methods["wait"] = update_wait
 
 func _physics_process(delta: float) -> void:
-	methods["active"].call(delta)
+	methods[state].call(delta)
+
 
 func wait():
 	SPEED = 0
 	area_2d.monitoring = false
 	area_2d.visible = false
+	whole_area.monitoring = true
+	state = "wait"
 
 func start(new_type):
 	SPEED = 1
 	type = new_type
 	area_2d.monitoring = true
 	area_2d.visible = true
+	whole_area.monitoring = false
+	state = "active"
+
+func update_wait(delta: float):
+	if is_pouring:
+		wait_accumulator += delta
 
 func update_area(delta: float):
 	delta_accumulator -= delta
