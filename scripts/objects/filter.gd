@@ -10,8 +10,8 @@ var delta_accumulator: float = 0
 var wait_accumulator: float = 0
 var is_pouring: bool = false
 var pour_accumulator: float
-var type : String
-var state = "active"
+var pot_temperature: String = "hot"
+var step_temperature: String = ""
 var state: String = "active"
 
 func _ready() -> void:
@@ -21,6 +21,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	methods[state].call(delta)
 
+func set_up(first_temperature):
+	step_temperature = first_temperature
 
 func wait():
 	SPEED = 0
@@ -31,7 +33,7 @@ func wait():
 
 func start(new_type):
 	SPEED = 1
-	type = new_type
+	step_temperature = new_type
 	area_2d.monitoring = true
 	area_2d.visible = true
 	whole_area.monitoring = false
@@ -47,8 +49,10 @@ func update_area(delta: float):
 		cos(delta_accumulator * SPEED) * radius,
 		sin(delta_accumulator * SPEED) * (radius - 50) 
 	)
-	if is_pouring:
+	if is_pouring and step_temperature == pot_temperature:
 		pour_accumulator += delta
+		print(pour_accumulator)
+
 
 func pouring(_area: Area2D) -> void:
 	is_pouring = true
