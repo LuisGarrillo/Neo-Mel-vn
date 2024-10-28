@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://q4a1c2e7pnok"]
+
+[ext_resource type="PackedScene" uid="uid://bu158m4v3m18d" path="res://scenes/ui/add_on_button.tscn" id="1_f1hol"]
+
+[node name="cup-preparation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -852.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AddOnButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Milk"
+
+[node name="AddOnButton2" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Honey"
+
+[node name="AddOnButton3" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Chocolate"
+
+[node name="AddOnButton4" parent="VBoxContainer/VBoxContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Blood"
