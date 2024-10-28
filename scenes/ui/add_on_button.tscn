@@ -1,6 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu158m4v3m18d"]
+[gd_scene load_steps=7 format=3 uid="uid://bu158m4v3m18d"]
 
+[ext_resource type="Script" path="res://scripts/ui/add_on_button.gd" id="1_hur8x"]
 [ext_resource type="Texture2D" uid="uid://b7at2q6wmdvyn" path="res://assets/sprites/ui/cup-preparation/add-on-outline.png" id="1_saxci"]
+
+[sub_resource type="Animation" id="Animation_rqs0v"]
+resource_name = "Select"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6f727"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lqei7"]
+resource_name = "Deselect"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lo1e"]
+_data = {
+"Deselect": SubResource("Animation_lqei7"),
+"RESET": SubResource("Animation_6f727"),
+"Select": SubResource("Animation_rqs0v")
+}
 
 [node name="AddOnButton" type="Control"]
 layout_mode = 3
@@ -11,6 +66,7 @@ offset_right = -902.0
 offset_bottom = -548.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hur8x")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -27,5 +83,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("1_saxci")
 centered = false
+
+[node name="IconSprite" type="Sprite2D" parent="."]
+position = Vector2(175, 50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1lo1e")
+}
