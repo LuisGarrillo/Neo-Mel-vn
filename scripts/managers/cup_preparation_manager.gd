@@ -1,5 +1,5 @@
 extends Control
-@onready var v_box_container: VBoxContainer = $VBoxContainer/VBoxContainer
+@onready var v_box_container: VBoxContainer = $VBoxContainer/AddOnContainer
 var selected_ingredient: AddOnButton
 
 # Called when the node enters the scene tree for the first time.
