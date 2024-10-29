@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cfc76lew5ws83"]
+[gd_scene load_steps=2 format=3 uid="uid://cfc76lew5ws83"]
+
+[ext_resource type="Script" path="res://scripts/ui/coffee_button.gd" id="1_i810i"]
 
 [node name="RemoveCoffeeButton" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ offset_right = -852.0
 offset_bottom = -578.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_i810i")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

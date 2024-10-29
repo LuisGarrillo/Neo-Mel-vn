@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/ui/add_on_button.gd" id="1_hur8x"]
 [ext_resource type="Texture2D" uid="uid://b7at2q6wmdvyn" path="res://assets/sprites/ui/cup-preparation/add-on-outline.png" id="1_saxci"]
 
-[sub_resource type="Animation" id="Animation_rqs0v"]
-resource_name = "Select"
+[sub_resource type="Animation" id="Animation_lqei7"]
+resource_name = "Deselect"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -14,9 +14,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6f727"]
@@ -34,8 +34,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_lqei7"]
-resource_name = "Deselect"
+[sub_resource type="Animation" id="Animation_rqs0v"]
+resource_name = "Select"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -45,9 +45,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lo1e"]
