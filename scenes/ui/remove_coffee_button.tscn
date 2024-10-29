@@ -27,3 +27,5 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Reduce Coffee"
+
+[connection signal="pressed" from="Button" to="." method="button_pressed"]

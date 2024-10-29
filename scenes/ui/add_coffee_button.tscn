@@ -33,3 +33,5 @@ text = "Add Coffee                "
 z_index = 15
 position = Vector2(200, 60)
 texture = ExtResource("1_61mlw")
+
+[connection signal="pressed" from="Button" to="." method="button_pressed"]
