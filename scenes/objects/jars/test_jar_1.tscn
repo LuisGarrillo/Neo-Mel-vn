@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://lpxhad36vvha"]
+
+[ext_resource type="PackedScene" uid="uid://73a1tpwtn640" path="res://scenes/objects/bean_jar.tscn" id="1_38v34"]
+[ext_resource type="Script" path="res://scripts/components/jar_data.gd" id="1_a3yrt"]
+[ext_resource type="Texture2D" uid="uid://g77lqsaxvgjt" path="res://assets/sprites/objects/jar.png" id="2_164oy"]
+
+[node name="TestJar1" type="Node2D"]
+script = ExtResource("1_a3yrt")
+
+[node name="BeanJar" parent="." instance=ExtResource("1_38v34")]
+
+[node name="Sprite2D" type="Sprite2D" parent="BeanJar"]
+texture = ExtResource("2_164oy")

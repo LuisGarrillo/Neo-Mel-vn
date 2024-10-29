@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1bv4tr4he12y"]
+
+[ext_resource type="Script" path="res://scripts/ui/pouring_control.gd" id="1_26sxx"]
+[ext_resource type="Texture2D" uid="uid://dnqi6tynqctcq" path="res://assets/sprites/ui/coffee_pouring/cold.png" id="2_7qjrx"]
+[ext_resource type="Texture2D" uid="uid://d0d0bmgd5eg6m" path="res://assets/sprites/ui/coffee_pouring/hot.png" id="3_jcdws"]
+[ext_resource type="PackedScene" uid="uid://bev7v31mjybjr" path="res://scenes/minigames/coffee_pouring.tscn" id="4_matf1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyl0s"]
+atlas = ExtResource("2_7qjrx")
+region = Rect2(0, 0, 300, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hs0o"]
+atlas = ExtResource("3_jcdws")
+region = Rect2(0, 0, 300, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvuau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyl0s")
+}],
+"loop": true,
+"name": &"cold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hs0o")
+}],
+"loop": true,
+"name": &"hot",
+"speed": 5.0
+}]
+
+[node name="PouringControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_26sxx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_vertical = 2
+
+[node name="Container" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Container"]
+sprite_frames = SubResource("SpriteFrames_wvuau")
+animation = &"hot"
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Times
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Start"
+horizontal_alignment = 1
+
+[node name="TimesContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "End"
+horizontal_alignment = 1
+
+[node name="CoffeePouring" parent="." instance=ExtResource("4_matf1")]
+
+[connection signal="change_temperature" from="CoffeePouring" to="." method="switch_temperature"]

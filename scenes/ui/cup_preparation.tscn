@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=3 uid="uid://q4a1c2e7pnok"]
+
+[ext_resource type="PackedScene" uid="uid://bu158m4v3m18d" path="res://scenes/ui/add_on_button.tscn" id="1_f1hol"]
+[ext_resource type="Script" path="res://scripts/managers/cup_preparation_manager.gd" id="1_vqsfv"]
+[ext_resource type="PackedScene" uid="uid://d4kcnobl7cl1i" path="res://scenes/ui/add_coffee_button.tscn" id="2_wxq8d"]
+[ext_resource type="PackedScene" uid="uid://cfc76lew5ws83" path="res://scenes/ui/remove_coffee_button.tscn" id="3_ousp5"]
+[ext_resource type="Texture2D" uid="uid://c54mjcw2jcsoh" path="res://assets/sprites/ui/cup-preparation/cup.png" id="5_kdw8e"]
+[ext_resource type="Texture2D" uid="uid://cyhhwrywb0100" path="res://assets/sprites/ui/cup-preparation/cup1.png" id="6_t5ucx"]
+[ext_resource type="Texture2D" uid="uid://c4uj5dlgdm2uc" path="res://assets/sprites/ui/cup-preparation/cup2.png" id="7_wj8p7"]
+[ext_resource type="Texture2D" uid="uid://4uxonxp4kowe" path="res://assets/sprites/ui/cup-preparation/cup3.png" id="8_su8od"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5dmu"]
+atlas = ExtResource("5_kdw8e")
+region = Rect2(0, 0, 321, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k65y3"]
+atlas = ExtResource("6_t5ucx")
+region = Rect2(0, 0, 321, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soh15"]
+atlas = ExtResource("7_wj8p7")
+region = Rect2(0, 0, 321, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkij3"]
+atlas = ExtResource("8_su8od")
+region = Rect2(0, 0, 321, 241)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_51cbf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5dmu")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k65y3")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soh15")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkij3")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="cup-preparation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -852.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vqsfv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoffeeContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AddCoffeeButton" parent="VBoxContainer/CoffeeContainer" instance=ExtResource("2_wxq8d")]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="RemoveCoffeeButton" parent="VBoxContainer/CoffeeContainer" instance=ExtResource("3_ousp5")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AddOnContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AddOnButton" parent="VBoxContainer/AddOnContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Milk"
+
+[node name="AddOnButton2" parent="VBoxContainer/AddOnContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Honey"
+
+[node name="AddOnButton3" parent="VBoxContainer/AddOnContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Chocolate"
+
+[node name="AddOnButton4" parent="VBoxContainer/AddOnContainer" instance=ExtResource("1_f1hol")]
+layout_mode = 2
+size_flags_vertical = 3
+ingredient_name = "Blood"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(300, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(416, 288)
+sprite_frames = SubResource("SpriteFrames_51cbf")
+animation = &"0"
+
+[connection signal="pressed" from="VBoxContainer/CoffeeContainer/AddCoffeeButton" to="." method="add_coffee"]
+[connection signal="pressed" from="VBoxContainer/CoffeeContainer/RemoveCoffeeButton" to="." method="remove_coffee"]
