@@ -1,6 +1,9 @@
 extends Control
 @onready var v_box_container: VBoxContainer = $VBoxContainer/AddOnContainer
 @onready var animated_sprite_2d: AnimatedSprite2D = $Node2D/AnimatedSprite2D
+@onready var serve_button: Button = $ServeButton
+
+signal serve_cup
 
 var selected_ingredient: AddOnButton
 var coffee_amount: int = 0
@@ -20,6 +23,11 @@ func remove_coffee() -> void:
 	update_cup()
 	
 func update_cup() -> void:
+	if coffee_amount == 0:
+		serve_button.disabled = true
+	else:
+		serve_button.disabled = false
+	
 	var key = String.num_int64(coffee_amount)
 	animated_sprite_2d.play(key)
 
@@ -32,4 +40,15 @@ func select_ingredient(ingredient: AddOnButton) -> void:
 		
 	selected_ingredient = ingredient
 	selected_ingredient.select()
-		
+	
+func serve():
+	var add_on: String = ""
+	if selected_ingredient:
+		add_on = selected_ingredient.ingredient_name
+	
+	var cup_data: Dictionary = {
+		"coffee_amount": coffee_amount,
+		"add_on": add_on,
+	}
+	serve_cup.emit(cup_data)
+	
