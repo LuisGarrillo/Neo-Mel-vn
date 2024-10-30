@@ -1,4 +1,5 @@
 extends Control
+class_name CupPreparation
 @onready var v_box_container: VBoxContainer = $VBoxContainer/AddOnContainer
 @onready var animated_sprite_2d: AnimatedSprite2D = $Node2D/AnimatedSprite2D
 @onready var serve_button: Button = $ServeButton
