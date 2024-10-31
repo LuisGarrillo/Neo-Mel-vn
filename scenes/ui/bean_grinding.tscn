@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bvv71d0yhqsep"]
+[gd_scene load_steps=2 format=3 uid="uid://bvv71d0yhqsep"]
+
+[ext_resource type="PackedScene" uid="uid://bsauvlhwcih08" path="res://scenes/objects/bean_grinder.tscn" id="1_j58xa"]
 
 [node name="BeanGrinding" type="Control"]
 layout_mode = 3
@@ -7,3 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+
+[node name="BeanGrinder" parent="." instance=ExtResource("1_j58xa")]
+position = Vector2(801, 305)
