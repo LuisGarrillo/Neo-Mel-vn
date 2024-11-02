@@ -65,17 +65,15 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -852.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vqsfv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 300.0
 grow_vertical = 2
 
 [node name="CoffeeContainer" type="VBoxContainer" parent="VBoxContainer"]
@@ -124,5 +122,15 @@ position = Vector2(416, 288)
 sprite_frames = SubResource("SpriteFrames_51cbf")
 animation = &"0"
 
+[node name="ServeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 482.0
+offset_right = 865.0
+offset_bottom = 582.0
+disabled = true
+text = "Serve"
+
 [connection signal="pressed" from="VBoxContainer/CoffeeContainer/AddCoffeeButton" to="." method="add_coffee"]
 [connection signal="pressed" from="VBoxContainer/CoffeeContainer/RemoveCoffeeButton" to="." method="remove_coffee"]
+[connection signal="pressed" from="ServeButton" to="." method="serve"]
